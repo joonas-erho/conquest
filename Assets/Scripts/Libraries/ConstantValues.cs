@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Const
+public class ConstantValues
 {
     public static readonly float DOUBLE_WIDTH = Mathf.Sqrt(3);
     public static readonly float WIDTH = Mathf.Sqrt(3) / 2;

@@ -17,6 +17,19 @@ public class Tiles
 
     public void AddTile(Tile tile)
     {
+        int c = tile.GetColumn();
+        int r = tile.GetRow();
+        tiles[c, r] = tile;
+    }
 
+    public Tile GetTile(int c, int r)
+    {
+        try {
+            return tiles[c, r];
+        }
+        catch {
+            Debug.Log("Illegal index!");
+            return null;
+        }
     }
 }
