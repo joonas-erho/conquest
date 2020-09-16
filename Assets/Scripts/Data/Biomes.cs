@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Biomes
 {
+    /*
     //Dictionary for biomes, with biome name as key.
     private Dictionary<string, Biome> biomes = new Dictionary<string, Biome>();
 
@@ -35,5 +36,5 @@ public class Biomes
     public Biome GetBiome(string name)
     {
         return biomes[name];
-    }
+    }*/
 }

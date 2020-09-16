@@ -43,6 +43,6 @@ public class Tile : MonoBehaviour
     private void UpdateBiome()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.color = biome.GetColor();
+        sr.color = biome.color;
     }
 }

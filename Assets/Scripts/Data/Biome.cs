@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Biome
+public class OldBiome
 {
     private int biomeId;
     private string biomeName;
     private Color biomeColor;
 
-    public Biome(int id, string name, Color color)
+    public OldBiome(int id, string name, Color color)
     {
         biomeId = id;
         biomeName = name;

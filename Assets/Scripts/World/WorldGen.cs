@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
@@ -11,8 +12,13 @@ public class WorldGen : MonoBehaviour
     //Colors for tiles before actual textures are applied
     public Color[] colors;
 
-    //Biomes-class, which holds all biomes
-    private Biomes biomes;
+    //biomes
+    public Biome[] biomes;
+
+    public NaturalResource[] naturalResources;
+
+    public Dictionary<string, Biome> biomesDict;
+    public Dictionary<string, NaturalResource> naturalResourcesDict;
 
     /// <summary>
     /// Generate a new world from scratch.
@@ -23,7 +29,8 @@ public class WorldGen : MonoBehaviour
     public void GenerateNewWorld(int columns, int rows, Tiles tiles, IMapType mapType)
     {
         //Create biomes data (preset)
-        biomes = CreateBiomes(colors);
+        biomesDict = CreateBiomeDictionary(biomes);
+        naturalResourcesDict = CreateNaturalResourcesDictionary(naturalResources);
 
         //Initialize tiles
         for (int c = 0; c < columns; c++)
@@ -35,7 +42,30 @@ public class WorldGen : MonoBehaviour
         }
 
         //Actually generate the map (biomes and features)
-        GenerateMap(mapType, columns, rows, tiles, biomes);
+        GenerateMap(mapType, columns, rows, tiles, biomesDict);
+    }
+
+    private Dictionary<string, Biome> CreateBiomeDictionary(Biome[] biomes)
+    {
+        Dictionary<string, Biome> dictionary = new Dictionary<string, Biome>();
+
+        for (int i = 0; i < biomes.Length; i++)
+        {
+            dictionary.Add(biomes[i].name, biomes[i]);
+        }
+
+        return dictionary;
+    }
+    private Dictionary<string, NaturalResource> CreateNaturalResourcesDictionary(NaturalResource[] naturalResources)
+    {
+        Dictionary<string, NaturalResource> dictionary = new Dictionary<string, NaturalResource>();
+
+        for (int i = 0; i < biomes.Length; i++)
+        {
+            dictionary.Add(biomes[i].name, naturalResources[i]);
+        }
+
+        return dictionary;
     }
 
     /// <summary>
@@ -63,15 +93,10 @@ public class WorldGen : MonoBehaviour
         //Set name in Unity editor
         tileObject.name = "TILE " + column + "," + row;
 
-        tile.SetBiome(biomes.GetBiome("Ocean"));
+        tile.SetBiome(biomesDict["Ocean"]);
     }
 
-    private Biomes CreateBiomes(Color[] colors)
-    {
-        return new Biomes(colors);
-    }
-
-    private void GenerateMap(IMapType mapType, int columns, int rows, Tiles tiles, Biomes biomes)
+    private void GenerateMap(IMapType mapType, int columns, int rows, Tiles tiles, Dictionary<string, Biome> biomes)
     {
         mapType.GenerateMap(columns, rows, tiles, biomes);
     }

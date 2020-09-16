@@ -9,7 +9,7 @@ public class Map_Continent : IMapType
 
     }
 
-    public void GenerateMap(int columns, int rows, Tiles tiles, Biomes biomes)
+    public void GenerateMap(int columns, int rows, Tiles tiles, Dictionary<string, Biome> biomes)
     {
         float[,] noiseMap = Noise.GenerateNoiseMap(columns, rows, Random.Range(0, 100000), 5f, 4, 0.5f, 1f, new Vector2(0, 0));
 
@@ -30,26 +30,26 @@ public class Map_Continent : IMapType
         }
     }
 
-    private void SetRandomBiomes(Tile tile, Biomes biomes)
+    private void SetRandomBiomes(Tile tile, Dictionary<string, Biome> biomes)
     {
         float random = Random.Range(0f, 1f);
 
         if (random < 0.1f)
         {
-            tile.SetBiome(biomes.GetBiome("Desert"));
+            tile.SetBiome(biomes["Desert"]);
             return;
         }
         if (random < 0.2f)
         {
-            tile.SetBiome(biomes.GetBiome("Rocky Plains"));
+            tile.SetBiome(biomes["Rocky Plains"]);
             return;
         }
         if (random < 0.6f)
         {
-            tile.SetBiome(biomes.GetBiome("Forest"));
+            tile.SetBiome(biomes["Plains"]);
             return;
         }
 
-        tile.SetBiome(biomes.GetBiome("Plains"));
+        tile.SetBiome(biomes["Forest"]);
     }
 }
