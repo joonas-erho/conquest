@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour
 
     public float positionCorrectionSpeed;
 
-    private float minMovementSpeed = 0.015f;
-    private float maxMovementSpeed = 0.042f;
+    public float minMovementSpeed;
+    public float maxMovementSpeed;
 
     public float maxZoom;
     public float minZoom;
@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
     public float currentHeightOnScreen;
 
     public Camera cam;
+
+    public Camera minimapCamera;
 
     private Vector3 oldPosition;
 
@@ -69,7 +71,7 @@ public class CameraController : MonoBehaviour
             Vector3 position = transform.position;
             position[2] = position[2] - cameraZoomSpeed;
             
-            cameraMovementSpeed += 0.001f;
+            cameraMovementSpeed += 0.0015f;
 
             if (transform.position.y < (-0.75f + (currentHeightOnScreen / 2) * 0.75f))
             {
@@ -88,7 +90,7 @@ public class CameraController : MonoBehaviour
             Vector3 position = transform.position;
             position[2] = position[2] + cameraZoomSpeed;
             transform.position = position;
-            cameraMovementSpeed -= 0.001f;
+            cameraMovementSpeed -= 0.0015f;
         }
 
         Clamp();
@@ -99,6 +101,10 @@ public class CameraController : MonoBehaviour
     {
         if(oldPosition != this.transform.position)
         {
+            Vector3 pos = minimapCamera.transform.position;
+            pos.x += (this.transform.position.x - oldPosition.x);
+            minimapCamera.transform.position = pos;
+
             oldPosition = this.transform.position;
 
             for (int c = 0; c < MatchManager.Singleton.mapWidth; c++)

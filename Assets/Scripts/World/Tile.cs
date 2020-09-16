@@ -45,4 +45,9 @@ public class Tile : MonoBehaviour
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.color = biome.color;
     }
+
+    public void OnMouseDown()
+    {
+        UIController.Singleton.infoScreen.SelectTile(this);
+    }
 }
