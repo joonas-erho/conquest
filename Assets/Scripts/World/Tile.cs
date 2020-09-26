@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
     private int row;
     private Biome biome;
 
+    public SpriteRenderer outlineRenderer;
+
     public void Initialize(int column, int row)
     {
         this.column = column;
