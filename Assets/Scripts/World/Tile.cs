@@ -1,24 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public TileData tileData;
+    private int column;
+    private int row;
+    private Biome biome;
+
+    public SpriteRenderer outlineRenderer;
 
     public void Initialize(int column, int row)
     {
-        tileData = new TileData(column, row);
+        this.column = column;
+        this.row = row;
     }
 
-    public int GetColumnAndRow(int i)
+    #region Getters
+    public int GetColumn()
     {
-        if (i == 0) return tileData.GetColumn();
-        else if (i == 1) return tileData.GetRow();
-        else
-        {
-            Debug.Log("Illegal index!");
-            return -1;
-        }
+        return column;
+    }
+
+    public int GetRow()
+    {
+        return row;
+    }
+
+    public Biome GetBiome()
+    {
+        return biome;
+    }
+    #endregion
+
+    #region Setters
+    public void SetBiome(Biome biome)
+    {
+        this.biome = biome;
+        UpdateBiome();
+    }
+    #endregion
+
+    private void UpdateBiome()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.color = biome.color;
+    }
+
+    public void OnMouseDown()
+    {
+        UIController.Singleton.infoScreen.SelectTile(this);
     }
 }
