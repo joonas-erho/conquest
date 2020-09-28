@@ -7,4 +7,6 @@ public class NaturalResource : ScriptableObject
 {
     public new string name;
     public Sprite icon;
+
+    public float spawnChance;
 }

@@ -41,8 +41,11 @@ public class WorldGen : MonoBehaviour
             }
         }
 
-        //Actually generate the map (biomes and features)
+        //Generate landmasses and biomes
         GenerateMap(mapType, columns, rows, tiles, biomesDict);
+
+        //Generate Resources
+        GenerateResources(columns, rows, tiles);
     }
 
     private Dictionary<string, Biome> CreateBiomeDictionary(Biome[] biomes)
@@ -99,5 +102,25 @@ public class WorldGen : MonoBehaviour
     private void GenerateMap(IMapType mapType, int columns, int rows, Tiles tiles, Dictionary<string, Biome> biomes)
     {
         mapType.GenerateMap(columns, rows, tiles, biomes);
+    }
+
+    private void GenerateResources(int columns, int rows, Tiles tiles)
+    {
+        for (int c = 0; c < columns; c++)
+        {
+            for (int r = 0; r < rows; r++)
+            {
+                Tile tile = tiles.GetTile(c, r);
+                NaturalResource[] resources = tile.GetBiome().resourcesSpawnableOnThisTile;
+                foreach(NaturalResource resource in resources)
+                {
+                    float random = UnityEngine.Random.Range(0f, 1f);
+                    if (random < resource.spawnChance)
+                    {
+                        tile.AddNaturalResource(resource);
+                    }
+                }
+            }
+        }
     }
 }

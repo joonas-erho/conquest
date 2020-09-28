@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tab : MonoBehaviour
+public class TabButton : MonoBehaviour
 {
-    public GameObject tabObject;
+    public Tab tab;
     public int index;
 }

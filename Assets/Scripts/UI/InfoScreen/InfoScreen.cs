@@ -5,30 +5,29 @@ using UnityEngine.UI;
 
 public class InfoScreen : MonoBehaviour
 {
-    public Button button;
     public Text biomeText;
+    public Text naturalResourcesText;
+
     public Sprite[] headers;
     public GameObject infoTab;
 
-    [SerializeField]
-    private Tile currentlySelectedTile;
-    [SerializeField]
-    private GameObject currentlySelectedTab;
+    public Tile currentlySelectedTile;
+    public Tab currentlySelectedTab;
 
-    public void ChangeTab(Tab tab)
+    public void ChangeTab(TabButton tabButton)
     {
-        GetComponent<Image>().sprite = headers[tab.index];
-        GameObject oldTab = currentlySelectedTab;
-        currentlySelectedTab.SetActive(false);
-        currentlySelectedTab = tab.tabObject;
-        currentlySelectedTab.SetActive(true);
+        GetComponent<Image>().sprite = headers[tabButton.index];
+        currentlySelectedTab.gameObject.SetActive(false);
+        currentlySelectedTab = tabButton.tab;
+        currentlySelectedTab.gameObject.SetActive(true);
     }
 
     public void SelectTile(Tile tile)
     {
-        if(currentlySelectedTab == null)
+        if (currentlySelectedTab == null)
         {
-            currentlySelectedTab = infoTab;
+            currentlySelectedTab = infoTab.GetComponent<InfoTab>();
+            GetComponent<Image>().sprite = headers[0];
             infoTab.SetActive(true);
         }
         try
@@ -39,8 +38,8 @@ public class InfoScreen : MonoBehaviour
 
         currentlySelectedTile = tile;
         this.gameObject.SetActive(true);
-        biomeText.text = tile.GetBiome().name;
-        tile.outlineRenderer.color = Color.yellow;
+
+        currentlySelectedTab.SelectTile(tile);
     }
 
     public void DeselectTile()
@@ -48,6 +47,7 @@ public class InfoScreen : MonoBehaviour
         this.gameObject.SetActive(false);
         currentlySelectedTile.outlineRenderer.color = new Color(0f,0f,0f,0.2f);
         currentlySelectedTile = null;
+        currentlySelectedTab.gameObject.SetActive(false);
         currentlySelectedTab = null;
     }
 }

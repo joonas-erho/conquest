@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 053cdf1ee9482054abdae33b073b503b, type: 3}
-  m_Name: Wheat
+  m_Name: Copper
   m_EditorClassIdentifier: 
-  name: Wheat
+  name: Copper
   icon: {fileID: 0}
-  spawnChance: 0.7
+  spawnChance: 0.5
