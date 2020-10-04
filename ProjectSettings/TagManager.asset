@@ -56,3 +56,6 @@ TagManager:
   - name: Resource Icons
     uniqueID: 3901364685
     locked: 0
+  - name: Armies
+    uniqueID: 477174195
+    locked: 0
