@@ -49,4 +49,32 @@ public class TileMethods
 
         tile.transform.position = position;
     }
+
+    /// <summary>
+    /// Returns tile based on given position
+    /// </summary>
+    /// <param name="column">Position of tile vertically</param>
+    /// <param name="row">Position of the horizontally</param>
+    /// <returns>Tile based on the given position, error if given indexes are out of bounds</returns>
+    public static Tile GetTile(int column, int row)
+    {
+        try
+        {
+            return MatchManager.Singleton.tiles.GetTile(column, row);
+        }
+        catch
+        {
+            Debug.Log("Illegal indexes for GetTile in TileMethods!");
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Returns a random tile within the boundaries of the map
+    /// </summary>
+    /// <returns></returns>
+    public static Tile GetRandomTile()
+    {
+        return MatchManager.Singleton.tiles.GetTile(Random.Range(0, MatchManager.Singleton.mapWidth), Random.Range(0, MatchManager.Singleton.mapHeight));
+    }
 }

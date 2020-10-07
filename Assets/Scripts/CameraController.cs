@@ -111,7 +111,7 @@ public class CameraController : MonoBehaviour
             {
                 for (int r = 0; r < MatchManager.Singleton.mapHeight; r++)
                 {
-                    Tile tile = MatchManager.Singleton.GetTile(c, r);
+                    Tile tile = TileMethods.GetTile(c, r);
                     TileMethods.UpdatePosition(tile, cam);
                 }
             }

@@ -21,6 +21,6 @@ public class Factions : MonoBehaviour
             factionList.Add(faction);
         }
 
-        foreach (Faction faction in factionList) Debug.Log(faction.factionName);
+        //foreach (Faction faction in factionList) Debug.Log(faction.factionName);
     }
 }

@@ -5,14 +5,15 @@ using UnityEngine.EventSystems;
 
 public class Army : MonoBehaviour, IPointerClickHandler
 {
-    public SpriteRenderer edge;
+    public SpriteRenderer baseTexture;
     public SpriteRenderer banner;
     public SpriteRenderer strengthBar;
     public SpriteRenderer supplyBar;
     public SpriteRenderer moraleBar;
+    public GameObject outline;
 
     public string armyName;
-    //public Faction owner;
+    public Faction owner;
     public Tile currentTile;
 
     public float strength;
@@ -28,7 +29,7 @@ public class Army : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Selected army!");
+        UIController.Singleton.armyScreen.SelectArmy(this);
     }
 
     public void SetCurrentTile(Tile tile)

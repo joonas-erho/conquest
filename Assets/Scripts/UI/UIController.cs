@@ -12,9 +12,12 @@ public class UIController : MonoBehaviour
 
     public InfoScreen infoScreen;
 
+    public ArmyScreen armyScreen;
+
     public void Start()
     {
         infoScreen.gameObject.SetActive(false);
+        armyScreen.gameObject.SetActive(false);
     }
 
 }

@@ -8,9 +8,11 @@ public class SpecialArmy : Army
 
     public SpecialUnit unitType;
 
-    public void SetStats(SpecialUnit unitType)
+    public void SetStats(SpecialUnit unitType, Faction faction)
     {
+        this.unitType = unitType;
         icon.sprite = unitType.icon;
+        banner.sprite = faction.factionBanner;
         attack = unitType.maxAttack;
         rangedAttack = unitType.maxRangedAttack;
         speed = unitType.speed;
