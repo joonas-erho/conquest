@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Desert
   color: {r: 0.7169812, g: 0.6698815, b: 0.40922037, a: 1}
+  isLand: 1
+  banner: {fileID: 0}
+  resourcesSpawnableOnThisTile: []

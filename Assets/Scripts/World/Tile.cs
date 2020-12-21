@@ -69,7 +69,7 @@ public class Tile : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        UIController.Singleton.infoScreen.SelectTile(this);
+        if(eventData.button == PointerEventData.InputButton.Left) UIController.Singleton.infoScreen.SelectTile(this);
     }
 
 }

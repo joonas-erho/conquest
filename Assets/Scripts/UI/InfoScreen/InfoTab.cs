@@ -23,7 +23,5 @@ public class InfoTab : Tab
             naturalResourcesText.text = "Natural Resources: " + resourcesText;
         }
         else naturalResourcesText.text = "No Natural Resources.";
-
-        tile.outlineRenderer.color = Color.yellow;
     }
 }

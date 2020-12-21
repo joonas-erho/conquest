@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Plains
   color: {r: 0.6345436, g: 0.764151, b: 0.35684407, a: 1}
+  isLand: 1
   banner: {fileID: 0}
   resourcesSpawnableOnThisTile:
   - {fileID: 11400000, guid: 64d2c4ae644074546b2893c1b6513c8c, type: 2}

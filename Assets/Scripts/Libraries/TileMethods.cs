@@ -77,4 +77,19 @@ public class TileMethods
     {
         return MatchManager.Singleton.tiles.GetTile(Random.Range(0, MatchManager.Singleton.mapWidth), Random.Range(0, MatchManager.Singleton.mapHeight));
     }
+
+    /// <summary>
+    /// Returns a random land tile within the boundaries of the map, attempting up to ten thousand times
+    /// </summary>
+    /// <returns></returns>
+    public static Tile GetRandomLandTile()
+    {
+        for (int i = 0; i < 10000; i++)
+        {
+            Tile randomTile = GetRandomTile();
+            if (randomTile.GetBiome().isLand) return randomTile;
+        }
+
+        return null;
+    }
 }

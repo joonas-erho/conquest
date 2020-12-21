@@ -11,7 +11,7 @@ public class ArmiesManager : MonoBehaviour
 
     public void SpawnInitialArmies(FactionManager factionManager)
     {
-        Tile settlerSpawnTile = TileMethods.GetRandomTile();
+        Tile settlerSpawnTile = TileMethods.GetRandomLandTile();
         Debug.Log(settlerSpawnTile);
         SpawnSpecialUnit(factionManager, initialSettler, settlerSpawnTile);
     }

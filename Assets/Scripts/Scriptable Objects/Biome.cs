@@ -8,6 +8,7 @@ public class Biome : ScriptableObject
     public new string name;
     public Color color;
 
+    public bool isLand;
     public Sprite banner;
 
     public NaturalResource[] resourcesSpawnableOnThisTile;

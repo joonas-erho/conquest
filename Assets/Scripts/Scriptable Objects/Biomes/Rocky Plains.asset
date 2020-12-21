@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rocky Plains
   color: {r: 0.3679245, g: 0.35915974, b: 0.31065324, a: 1}
+  isLand: 1
+  banner: {fileID: 0}
   resourcesSpawnableOnThisTile:
   - {fileID: 11400000, guid: a541e2da03c3bc1419f168316e55f06b, type: 2}

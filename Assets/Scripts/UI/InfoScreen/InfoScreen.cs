@@ -20,6 +20,7 @@ public class InfoScreen : MonoBehaviour
         currentlySelectedTab.gameObject.SetActive(false);
         currentlySelectedTab = tabButton.tab;
         currentlySelectedTab.gameObject.SetActive(true);
+        currentlySelectedTab.SelectTile(currentlySelectedTile);
     }
 
     public void SelectTile(Tile tile)
@@ -37,6 +38,7 @@ public class InfoScreen : MonoBehaviour
         catch { }
 
         currentlySelectedTile = tile;
+        tile.outlineRenderer.color = Color.yellow;
         this.gameObject.SetActive(true);
 
         currentlySelectedTab.SelectTile(tile);

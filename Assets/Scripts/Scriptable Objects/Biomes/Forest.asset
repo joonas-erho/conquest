@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Forest
   color: {r: 0.23206665, g: 0.5377358, b: 0.1953097, a: 1}
+  isLand: 1
+  banner: {fileID: 0}
   resourcesSpawnableOnThisTile:
   - {fileID: 11400000, guid: 2632149d57f56064c9f06e0244630d29, type: 2}
   - {fileID: 11400000, guid: 5e82d0bfb357e764ab636f09db829ecc, type: 2}
