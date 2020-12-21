@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Settle
   m_EditorClassIdentifier: 
   abilityName: Settle
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c82b014c4afaff64f939cc8dbb90109c, type: 3}
   description: This unit can consume itself to create a new settlement for their
     glorious empire.

@@ -18,5 +18,6 @@ public class SpecialArmy : Army
         speed = unitType.speed;
         toughness = unitType.maxToughness;
         abilities = unitType.abilities;
+        armyName = unitType.unitName;
     }
 }

@@ -13,7 +13,7 @@ public class Army : MonoBehaviour, IPointerClickHandler
     public GameObject outline;
 
     public string armyName;
-    public Faction owner;
+    public FactionManager owner;
     public Tile currentTile;
 
     public float strength;
@@ -27,6 +27,21 @@ public class Army : MonoBehaviour, IPointerClickHandler
 
     public UnitAbility[] abilities;
 
+    public bool hasActed = false;
+
+    public Tile tileToMoveTo;
+
+    public void StartOfTurn()
+    {
+        if (tileToMoveTo != null)
+        {
+            MoveTo(tileToMoveTo);
+            tileToMoveTo = null;
+        }
+
+        hasActed = false;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         UIController.Singleton.armyScreen.SelectArmy(this);
@@ -36,5 +51,22 @@ public class Army : MonoBehaviour, IPointerClickHandler
     {
         currentTile = tile;
         this.transform.position = tile.transform.position;
+    }
+
+    public void SetupMovement(Tile tile)
+    {
+        tileToMoveTo = tile;
+        hasActed = true;
+    }
+
+    public void CancelMovement()
+    {
+        tileToMoveTo = null;
+        hasActed = false;
+    }
+
+    public void MoveTo(Tile tile)
+    {
+
     }
 }

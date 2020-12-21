@@ -12,7 +12,6 @@ public class ArmiesManager : MonoBehaviour
     public void SpawnInitialArmies(FactionManager factionManager)
     {
         Tile settlerSpawnTile = TileMethods.GetRandomLandTile();
-        Debug.Log(settlerSpawnTile);
         SpawnSpecialUnit(factionManager, initialSettler, settlerSpawnTile);
     }
 
@@ -24,6 +23,7 @@ public class ArmiesManager : MonoBehaviour
         sa.SetStats(specialUnit, factionManager.faction);
         spawnedUnit.transform.SetParent(tile.transform);
         spawnedUnit.transform.position = tile.transform.position;
-        factionManager.AddArmy(sa);
+        sa.owner = factionManager;
+        factionManager.AddArmy(sa);      
     }
 }
